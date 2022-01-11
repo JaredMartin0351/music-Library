@@ -3,7 +3,7 @@ import './musicTable.css';
 export default function MusicTable(props) {
     return (
         <div className="table-container">
-            <table class="table table table-dark table-striped">
+            <table className="table table table-dark table-striped">
                 <thead>
                     <tr>
                     <th scope="col">Title</th>
