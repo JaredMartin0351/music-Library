@@ -1,35 +1,38 @@
-import React from 'react'
+import './musicTable.css';
 
-export default function MusicTable() {
+export default function MusicTable(props) {
     return (
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+        <div className="table-container">
+            <table class="table table table-dark table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Album</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Genre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.songs.map((song) => {
+                        return(
+                        <tr key={song.id}>
+                            <td>
+                                {song.title}
+                            </td>
+                            <td>
+                                {song.album}
+                            </td>
+                            <td>
+                                {song.artist}
+                            </td>
+                            <td>
+                                {song.genre}
+                            </td>
+                        </tr>
+                        );
+                        })}
+                </tbody>
+            </table>
+        </div>
     )
 }

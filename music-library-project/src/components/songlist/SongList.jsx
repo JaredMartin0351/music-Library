@@ -4,11 +4,12 @@ import './songList.css';
 
 
 
-const SongList = (props) => {
-    console.log(props.songs)
 
-    let mappedSongs = props.songs.map(id => {
-        return <li>{id.title}</li>
+const SongList = (props) => {
+    console.log(props)
+
+    let mappedSongs = props.songs.map(song => {
+        return <li key={song.id}>{song.title}</li>
     })
 
     return (
