@@ -2,6 +2,8 @@ import './app.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SongList from './components/songlist/SongList';
+import NavBar from './components/navbar/NavBar';
+
 
 
 
@@ -25,6 +27,7 @@ export default function App() {
   }
   return (
     <div className='App'>
+      <NavBar/>
       <SongList songs = {songs}/>
     </div>
   )
