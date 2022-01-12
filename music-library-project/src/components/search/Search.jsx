@@ -3,14 +3,14 @@ import "./search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 
-function Search({ placeholder, data }) {
+function Search({ placeholder, props }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = data.filter((value) => {
+    const newFilter = props.filter((value) => {
       return value.title.toLowerCase().includes(searchWord.toLowerCase());
     });
 
