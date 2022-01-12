@@ -4,6 +4,8 @@ import axios from 'axios';
 import SongList from './components/songlist/SongList';
 import Filter from './components/filter/Filter';
 import MusicTable from './components/musictable/MusicTable';
+// import Search from './components/search/Search';
+// import { Component } from "react";
 
 
 
@@ -28,6 +30,7 @@ export default function App() {
   return (
     <div className='App'>
       <Filter/>
+      {/* <Search/> */}
       <MusicTable songs={songs}/>
       <SongList songs = {songs}/>
     </div>
