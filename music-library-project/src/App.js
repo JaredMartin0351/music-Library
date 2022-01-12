@@ -2,8 +2,9 @@ import './app.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SongList from './components/songlist/SongList';
-import NavBar from './components/navbar/NavBar';
+import Filter from './components/filter/Filter';
 import MusicTable from './components/musictable/MusicTable';
+
 
 
 
@@ -26,7 +27,7 @@ export default function App() {
   }
   return (
     <div className='App'>
-      <NavBar/>
+      <Filter/>
       <MusicTable songs={songs}/>
       <SongList songs = {songs}/>
     </div>
