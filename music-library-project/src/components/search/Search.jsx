@@ -1,35 +1,61 @@
-// import React, { Component } from "react";
-// import "./SearchBar.css";
+import React, { useState } from "react";
+import "./SearchBar.css";
 
-// class SearchBar extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       filterTerm: "",
-//     };
-//   }
 
-//   handleChange = (event) => {
-//     this.setState({
-//       [event.target.name]: event.target.value,
-//     });
-//   };
 
-//   handleSubmit = (event) => {
-//     event.preventDefault();
-//     this.props.filterSongs(this.state.filterTerm);
-//   };
+function Search({ placeholder, data }) {
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
 
-//   render() {
-//     console.log(this.state);
-//     return (
-//       <form onSubmit={this.handleSubmit} className="form-inline">
-//         <input
-//           className="form-control mr-sm-2" type="search" placeholder="Filter Songs" aria-label="Search" name="filterTerm" value={this.state.filterTerm} onChange={this.handleChange}
-//         />
-//       </form>
-//     );
-//   }
-// }
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = data.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
 
-// export default SearchBar;
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+
+  return (
+    <div className="search">
+      <div className="searchInputs">
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={wordEntered}
+          onChange={handleFilter}
+        />
+        <div className="searchIcon">
+          {filteredData.length === 0 ? (
+            <SearchIcon />
+          ) : (
+            <CloseIcon id="clearBtn" onClick={clearInput} />
+          )}
+        </div>
+      </div>
+      {filteredData.length != 0 && (
+        <div className="dataResult">
+          {filteredData.slice(0, 15).map((value, key) => {
+            return (
+              <a className="dataItem" href={value.link} target="_blank">
+                <p>{value.title} </p>
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Search;
