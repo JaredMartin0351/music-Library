@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./SearchBar.css";
-
-
+import "./search.css";
+import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
 
 function Search({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);

@@ -30,7 +30,7 @@ export default function App() {
   return (
     <div className='App'>
       <Filter/>
-      <Search/>
+      <Search songs={songs}/>
       <MusicTable songs={songs}/>
       <SongList songs = {songs}/>
     </div>
