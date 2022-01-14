@@ -4,7 +4,7 @@ import "./filter.css"
 
 
 
-const Filter = (props) => {
+function Filter(props) {
     
     const [searchTerm, setSearchTerm] = useState(' ')
 
