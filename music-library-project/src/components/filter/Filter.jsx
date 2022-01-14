@@ -1,22 +1,35 @@
-// import React from 'react';
+import React, { useState } from 'react';
+import "./filter.css"
 
 
 
 
-// export default function Filter() {
-//     return (
-//         <div className="dropdown">
-//             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-//                 Filter
-//             </button>
-//             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-//                 <li><a className="dropdown-item" href="#">Title</a></li>
-//                 <li><a className="dropdown-item" href="#">Album</a></li>
-//                 <li><a className="dropdown-item" href="#">Artist</a></li>
-//                 <li><a className="dropdown-item" href="#">Genre</a></li>
-//             </ul>
-//         </div> 
-// )}
+const Filter = (props) => {
+    
+    const [searchTerm, setSearchTerm] = useState(' ')
+
+    const handleSubmit = (searchTerm) => {
+        searchTerm.preventDefault();
+        props.searchSong(searchTerm)
+    }
+
+    const handleChange = (searchTerm) => {
+        setSearchTerm(searchTerm.target.value)
+    }
+    
+    return ( 
+        <div className='homeButton'>
+            <form onSubmit={handleSubmit} className='form-grid'>
+                <div className='form-group'>
+                    <label>Search</label>
+                    <input type="searchTerm" value={searchTerm} name="searchTerm" className="form-control form-control-sm" onChange={handleChange} />
+                </div>
+            </form>
+        </div>
+     );
+}
+ 
+export default Filter;
 
 
 

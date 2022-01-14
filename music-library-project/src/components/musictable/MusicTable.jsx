@@ -1,6 +1,6 @@
+import React from 'react';
 import './musicTable.css';
 
-import './musicTable.css';
 
 export default function MusicTable(props) {
     return (
