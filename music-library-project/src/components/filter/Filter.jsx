@@ -2,35 +2,45 @@ import React, { useState } from 'react';
 import "./filter.css"
 
 
-
-
 function Filter(props) {
-    
-    const [searchTerm, setSearchTerm] = useState(' ')
+    console.log(props)
+    const [searchValue, setSearchValue] = useState("")
+    console.log(searchValue)
 
-    const handleSubmit = (searchTerm) => {
-        searchTerm.preventDefault();
-        props.searchSong(searchTerm)
+
+    const handleSubmit = (e) => {
+        setSearchValue(e.target.value)
+        e.preventDefault();
+        console.log(e)
     }
 
-    const handleChange = (searchTerm) => {
-        setSearchTerm(searchTerm.target.value)
-    }
-    
-    return ( 
-        <div className='homeButton'>
-            <form onSubmit={handleSubmit} className='form-grid'>
-                <div className='form-group'>
-                    <label>Search</label>
-                    <input type="searchTerm" value={searchTerm} name="searchTerm" className="form-control form-control-sm" onChange={handleChange} />
-                </div>
-            </form>
+
+
+
+  
+    return (
+        <div className="Filter">
+            <div>
+                <form onSubmit={handleSubmit} className='form-grid'>
+                    <label>Search filtering</label>
+                        <input
+                            type="text"
+                            name="search"
+                            value={searchValue}
+                            onChange={e => setSearchValue(e.target.value)}
+                        />
+                </form>
+            </div>
+            <ul>
+            {props.songs.map((song) => {
+            return <li key={song.id}>{song.searchValue} </li>
+            })}
+            </ul>
         </div>
-     );
-}
- 
-export default Filter;
-
+    );
+  }
+  
+  export default Filter;
 
 
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import './musicTable.css';
 
-
 export default function MusicTable(props) {
     return (
         <div className="table-container">

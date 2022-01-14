@@ -16,7 +16,8 @@ export default function App() {
 
 
   const [songs, setSongs] = useState([]);
-  const [search, setSearch] = useState([]);
+  
+ 
 
 
   useEffect(() => {
@@ -29,16 +30,12 @@ export default function App() {
     setSongs(response.data);
   }
 
-  function searchSong(searchTerm){
-    if (searchTerm.includes(songs.title)){
-      setSearch(songs)
-      console.log(songs)
-    }
-  }
+  
+
   return (
     <div className='App'>
     
-      <Filter Filter={searchSong}/>
+      <Filter songs={songs}/>
       <MusicTable songs={songs}/>
       <SongList songs = {songs}/>
     
