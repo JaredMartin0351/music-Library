@@ -1,11 +1,23 @@
 import React from 'react';
 import './musicTable.css';
-import UpdateForm from "../updatesong/UpdateSong";
+import { useState } from "react";
+import UpdateSong from "../updatesong/UpdateSong";
+
 
 
 
 export default function MusicTable(props) {
+    
+    const [edit,setEdit] = useState(false)
+    const [song,setSong] = useState('')
 
+     const showEdit =(songToUpdate)=>{
+        setSong(songToUpdate)
+        setEdit(true)
+    }
+
+
+    
   
 
     return (
@@ -41,10 +53,10 @@ export default function MusicTable(props) {
                             </td>
                             <td>
                                 <div className='deletebutton'>
-                                    <button type="submit" className="btn btn-danger" >Delete</button>
+                                    <button type="submit" className="btn btn-danger" onClick={() => props.deleteSong(song.id)}>Delete</button>
                                 </div>
                                 <div className='editbutton'>
-                                    <button type="submit" className="btn btn-warning" onClick={UpdateForm}>Edit</button>
+                                    <button type="submit" className="btn btn-warning" onClick={()=>showEdit(props.updateSong)}>Update</button>
                                 </div>
                                
                             </td>
@@ -53,6 +65,7 @@ export default function MusicTable(props) {
                         })}
                 </tbody>
             </table>
+            {edit && <UpdateSong updateSong={props.updateSong} song = {song}/>}
         </div>
     )
 }

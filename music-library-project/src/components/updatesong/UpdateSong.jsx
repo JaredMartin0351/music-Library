@@ -1,6 +1,13 @@
 import React, {useState} from "react";
+import './updateSong.css';
 
-const UpdateForm = (props) => {
+
+
+
+
+
+
+export default function UpdateForm (props) {
 
     const [title, setTitle] = useState('');
     const [album, setAlbum] = useState('');
@@ -38,4 +45,3 @@ const UpdateForm = (props) => {
     );
 }
 
-export default UpdateForm;

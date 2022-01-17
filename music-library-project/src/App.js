@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SongForm from './components/createsong/CreateSong';
 import MusicTable from './components/musictable/MusicTable';
-import UpdateForm from './components/updatesong/UpdateSong';
+
 
 
 
@@ -50,6 +50,14 @@ export default function App() {
     }
   }
 
+  async function deleteSong(pk){
+  
+    let response = await axios.delete(`http://127.0.0.1:8000/music/${pk}/`)
+    if(response.status ===204){
+      getAllSongs();
+    }
+  }
+
  
 
   function search(props) {
@@ -73,9 +81,8 @@ export default function App() {
       <div className='inputbox'>
       <input type="text" placeholder='Filter' value={q} onChange={(e) => setQ(e.target.value)}/>
       </div>
-      <MusicTable songs={search(songs)}/>
+      <MusicTable songs={search(songs)} updateSong={updateSong} deleteSong={deleteSong}/>
       <SongForm createSong={createSong}/>
-    
     </div>
   )
 }
