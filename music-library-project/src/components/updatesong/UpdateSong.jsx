@@ -15,8 +15,8 @@ export default function UpdateForm (props) {
     const [genre, setGenre] = useState('');
     const [releaseDate, setReleaseDate] = useState('');
 
-    function handleSubmit(formEvent){
-        formEvent.preventDefault();
+    function handleSubmit(e){
+        e.preventDefault();
         let newSong = {
             title: title,
             album: album,
@@ -31,15 +31,15 @@ export default function UpdateForm (props) {
     return (
         <form onSubmit={handleSubmit}>
             <label>Title</label>
-            <input type='text' onChange={(event) => setTitle(event.target.value)} value={title}/>
+            <input type='text' onChange={(e) => setTitle(e.target.value)} value={title}/>
             <label>Album</label>
-            <input type='text' onChange={(event) => setAlbum(event.target.value)} value={album}/>
+            <input type='text' onChange={(e) => setAlbum(e.target.value)} value={album}/>
             <label>Artist</label>
-            <input type='text' onChange={(event) => setArtist(event.target.value)} value={artist}/>
+            <input type='text' onChange={(e) => setArtist(e.target.value)} value={artist}/>
             <label>Genre</label>
-            <input type='text' onChange={(event) => setGenre(event.target.value)} value={genre}/>
+            <input type='text' onChange={(e) => setGenre(e.target.value)} value={genre}/>
             <label>Release Date</label>
-            <input type='date' onChange={(event) => setReleaseDate(event.target.value)} value={releaseDate}/>
+            <input type='date' onChange={(e) => setReleaseDate(e.target.value)} value={releaseDate}/>
             <button type='submit'>Edit</button>
         </form>
     );
