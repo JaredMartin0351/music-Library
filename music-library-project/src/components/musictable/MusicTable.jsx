@@ -15,12 +15,14 @@ export default function MusicTable(props) {
         setSong(songToUpdate)
         setEdit(true)
     }
+    
 
 
     
   
 
     return (
+        <>
         <div className="table-container">
             <table className="table table table-dark table-striped">
                 <thead>
@@ -52,13 +54,12 @@ export default function MusicTable(props) {
                                 {song.release_date}
                             </td>
                             <td>
+                                <div className='updatebutton'>
+                                    <button type="submit" className="btn btn-warning" onClick={()=>showEdit(song)}>Update</button>
+                                </div>
                                 <div className='deletebutton'>
-                                    <button type="submit" className="btn btn-danger" onClick={() => props.deleteSong(song.id)}>Delete</button>
+                                    <button type="submit" className="btn btn-danger" onClick={() =>props.deleteSong(song.id)}>Delete</button>
                                 </div>
-                                <div className='editbutton'>
-                                    <button type="submit" className="btn btn-warning" onClick={()=>showEdit(props.updateSong)}>Update</button>
-                                </div>
-                               
                             </td>
                         </tr>
                         );
@@ -66,6 +67,8 @@ export default function MusicTable(props) {
                 </tbody>
             </table>
             {edit && <UpdateSong updateSong={props.updateSong} song = {song}/>}
+            
         </div>
+        </>
     )
 }

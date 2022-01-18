@@ -6,16 +6,15 @@
 
 .deletebutton {
     text-align: center;
-    margin-right: 5px;
-    
-}
-
-.editbutton {
-    text-align: center;
     margin-left: 5px;
     margin-right: -98px;
 }
 
-.deletebutton, .editbutton {
+.updatebutton {
+    text-align: center;
+    margin-right: 5px;
+}
+
+.deletebutton, .updatebutton {
     display: inline-block;
 }

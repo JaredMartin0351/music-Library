@@ -7,6 +7,7 @@ import MusicTable from './components/musictable/MusicTable';
 
 
 
+
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
@@ -38,15 +39,15 @@ export default function App() {
 
     let response = await axios.post('http://127.0.0.1:8000/music/', newSong);
     if(response.status === 201){
-      await getAllSongs();
+      getAllSongs();
     }
   }
 
-  async function updateSong(pk,newSong){
-
-    let response = await axios.put('http://127.0.0.1:8000/music/', pk, newSong)
+  async function updateSong(pk,updatedSong){
+  
+    let response = await axios.put(`http://127.0.0.1:8000/music/${pk}/`, updatedSong)
     if(response.status ===200){
-      await getAllSongs();
+      getAllSongs();
     }
   }
 
